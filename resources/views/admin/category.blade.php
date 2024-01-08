@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
     <style>
-        .div-center {
+        .center {
             margin: 0 auto;
             text-align: center;
+        }
+
+        table.center {
+            margin-top: 4rem;
+            border: 1px solid white;
+            text-align: center;
+            width: 50%;
         }
 
         .title-category {
@@ -40,11 +47,11 @@
 
                     @if (session()->has('message'))
                         <div class="alert alert-success">
-                            {{session()->get('message')}}
+                            {{ session()->get('message') }}
                         </div>
                     @endif
 
-                    <div class="div-center">
+                    <div class="center">
                         <h2 class="title-category">Add Category</h2>
 
                         <form action="{{ url('add_category') }}" method="post">
@@ -57,6 +64,36 @@
                         </form>
 
                     </div>
+
+                    <table class="center">
+
+                        <thead>
+
+                            <td>Category name</td>
+                            <td>
+                                Action
+                            </td>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach ($data as $item)
+                                <tr>
+
+                                    <td>{{ $item->category_name }}</td>
+                                    <td>
+                                        <a href="{{ url('delete_category', $item->id) }}"
+                                            class="btn btn-danger">Delete</a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+
+
+                        </tbody>
+
+                    </table>
 
                 </div>
                 <!-- content-wrapper ends -->

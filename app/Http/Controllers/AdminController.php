@@ -8,11 +8,21 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //
+    
+    public function delete_category($id){
+        $category = category::find($id);
+
+        $category->delete();
+
+        return redirect()->back()->with("message","delete category item successfully");
+
+    }
 
     public function view_category(){
 
-        return view("admin.category");
+        $data = category::all();
+
+        return view("admin.category", compact("data"));
 
     }
 
