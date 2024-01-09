@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
+    public function show_product(){
+
+        $products = product::all();
+        return view("admin.show_product",compact("products"));
+        
+    }
+
     public function add_product_item(Request $request){
 
         $product = new product;
