@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
+
 {
     /**
      * Run the migrations.
@@ -12,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id');
+            $table->id('id');
             $table->string('product_title')->nullable();
             $table->string('product_description')->nullable();
             $table->string('product_image')->nullable();

@@ -10,6 +10,17 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
+    public function delete_product($id){
+
+        $product = product::find($id);
+
+        $product->delete();
+
+        return redirect()->back()->with("message","delete product item successfully");
+
+
+    }
+
     public function show_product(){
 
         $products = product::all();

@@ -44,7 +44,11 @@
             <div class="main-panel">
 
                 <div class="content-wrapper">
-
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
 
                     <table class="center">
 
@@ -54,6 +58,8 @@
                             <td>price</td>
                             <td>image</td>
                             <td>category</td>
+                            <td>Edit</td>
+                            <td>Remove</td>
 
                         </thead>
 
@@ -61,7 +67,7 @@
 
                             @foreach ($products as $item)
                                 <tr>
-
+                               
                                     <td>{{ $item->product_title }}</td>
                                     <td>{{ $item->product_price }}</td>
                                     <td>
@@ -70,6 +76,14 @@
                                             alt="{{ $item->product_title }}">
                                     </td>
                                     <td>{{ $item->product_category }}</td>
+                                    <td>
+                                        <a href="{{ url('delete_product', $item->id) }}"
+                                            class="btn btn-danger">Delete</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('update_product', $item->id) }}"
+                                            class="btn btn-primary">Edit</a>
+                                    </td>
 
                                 </tr>
                             @endforeach

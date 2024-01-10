@@ -19,12 +19,12 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 Route::get('/redirect', [HomeController::class, 'redirect'] );
-
 Route::get('/view_category', [AdminController::class, 'view_category'] );
 Route::post('/add_category', [AdminController::class, 'add_category'] );
 Route::post('/add_product_item', [AdminController::class, 'add_product_item'] );
 Route::get('/add_product', [AdminController::class, 'view_product'] );
 Route::get('/show_product', [AdminController::class, 'show_product'] );
+Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'] );
 Route::get('/delete_category/{id}', [AdminController::class, 'delete_category'] );
 
 
