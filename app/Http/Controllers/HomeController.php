@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\product;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 // use GuzzleHttp\Psr7\Request;
 
@@ -45,6 +45,19 @@ class HomeController extends Controller
         }
     }
 
+    public function show_cart()
+    {
+
+        if (Auth::id()) {
+
+            $userId = Auth::user()->id;
+            $cart = cart::where("user_id", "=", $userId)->get();
+
+            return view("home.showcart", compact("cart"));
+        } else {
+            return redirect('login');
+        }
+    }
 
     public function add_cart(Request $request, $id)
     {
@@ -74,5 +87,15 @@ class HomeController extends Controller
         } else {
             return redirect('login');
         }
+    }
+
+    public function remove_cart($id)
+    {
+
+        $cart = cart::find($id);
+
+        $cart->delete();
+
+        return redirect()->back();
     }
 }

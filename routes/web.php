@@ -33,7 +33,10 @@ Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'] );
 Route::get('/update_product/{id}', [AdminController::class, 'update_product'] );
 
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'] );
+
 Route::post('/add_cart/{id}', [HomeController::class, 'add_cart'] );
+Route::get('/show_cart', [HomeController::class, 'show_cart'] );
+Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart'] );
 
 
 Route::middleware([
