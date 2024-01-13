@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\product;
 
 class HomeController extends Controller
 {
 
     public function index(){
-        return view("home.userpage");
+
+        $products = product::paginate(3);
+
+
+        return view("home.userpage", compact("products"));
     }
     
     public function redirect(){
