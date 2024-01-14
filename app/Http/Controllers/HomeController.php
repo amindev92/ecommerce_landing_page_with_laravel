@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use Illuminate\Http\Request;
 
 use App\Models\cart;
+use App\Models\order;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
@@ -97,5 +98,41 @@ class HomeController extends Controller
         $cart->delete();
 
         return redirect()->back();
+    }
+
+    public function cash_order(){
+
+        $user = Auth::user();
+
+        $products = cart::where('user_id', $user->id)->get();
+
+        foreach ($products as $product) {
+
+            $order = new order();
+            $order->user_id = $user->id;
+            $order->name = $product->name;
+            $order->email = $product->email;
+            $order->address = $product->address;
+            $order->phone = $product->phone;
+            $order->product_id = $product->product_id;
+            $order->product_title = $product->product_title;
+            $order->image = $product->product_image;
+            $order->price = $product->product_price;
+            $order->quantity = $product->product_quantity;
+
+            $order->payment_status = "cash on delivery";
+            $order->delivery_status = "processing";
+
+            $order->save();
+
+            $cartId = $product->product_id;
+            $cart = cart::find($cartId)->get();
+            $cart->delete();
+        }
+
+        return redirect()->back();
+
+
+
     }
 }

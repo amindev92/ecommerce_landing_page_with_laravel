@@ -58,6 +58,18 @@
             </tbody>
 
         </table>
+
+
+        <div class="container mx-auto w-50">
+        
+            <div class="row text-center">
+
+                <a href="{{url('cash_order')}}" class="btn btn-primary">Cash on Delivery</a>
+                <a href="" class="btn btn-primary">Pay using card</a>
+
+            </div>
+        
+        </div>
         <!-- footer start -->
         @include('home.footer')
 
