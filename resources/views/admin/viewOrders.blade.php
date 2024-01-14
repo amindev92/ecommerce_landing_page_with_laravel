@@ -63,6 +63,7 @@
                             <td>Payment status</td>
                             <td>Delivery Status</td>
                             <td>Iamge</td>
+                            <td>PDF</td>
 
                         </thead>
 
@@ -86,7 +87,10 @@
                                             alt="{{ $item->product_title }}">
                                     </td>
                                
-                                    
+                                    <td>
+                                        <a class="btn btn-primary" href='print/{{$item->id}}'>PDF</a>
+                                    </td>
+
 
                                 </tr>
                             @endforeach
