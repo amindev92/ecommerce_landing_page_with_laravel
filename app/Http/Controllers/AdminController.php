@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\product;
+use App\Models\order;
 use Illuminate\Http\Request;
 
 
 class AdminController extends Controller
 {
+
+    public function view_orders(){
+
+        $orders = order::all();
+
+        return view("admin.viewOrders", compact("orders"));
+
+    }
 
     public function update_product_item(Request $request, $id)
     {

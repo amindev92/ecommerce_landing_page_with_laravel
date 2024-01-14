@@ -125,8 +125,8 @@ class HomeController extends Controller
 
             $order->save();
 
-            $cartId = $product->product_id;
-            $cart = cart::find($cartId)->get();
+            $cartId = $product->id;
+            $cart = cart::find($cartId);
             $cart->delete();
         }
 
